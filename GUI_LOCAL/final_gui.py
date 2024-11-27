@@ -33,7 +33,7 @@ class show_result(QWidget):
         self.used_item = used_item["used_item"]
         screen_width = win32api.GetSystemMetrics(0)
         screen_height = win32api.GetSystemMetrics(1)
-        self.setWindowTitle("Automatic Imposition System")
+        self.setWindowTitle("自动拼版系统")
         self.resize(int(screen_width * 2 / 3), int(screen_height * 2 / 3))
         conLayout = QVBoxLayout()  # 整体上下布局
         higherlayout = QHBoxLayout()  # 上层是左右布局
@@ -77,21 +77,21 @@ class show_result(QWidget):
         self.character_tabel.setColumnWidth(1, 180)
         self.character_tabel.setColumnWidth(2, 100)
         self.character_tabel.setColumnWidth(3, 100)
-        self.character_tabel.setHorizontalHeaderLabels(['Order Type', 'Paper Weight', 'Print Number', 'Total Impressions']) #'选择订单类型', '纸张克重', '打印数量', '总模数'
+        self.character_tabel.setHorizontalHeaderLabels(['选择订单类型', '纸张克重', '打印数量', '总模数']) #'选择订单类型', '纸张克重', '打印数量', '总模数'
         self.character_tabel.setFixedWidth(600)
 
-        self.choice_all = QPushButton("Select All Categories") #选择所有类别
-        self.choice_none = QPushButton("Clear All Selections") #清除所有选择
+        self.choice_all = QPushButton("选择所有类别") #选择所有类别
+        self.choice_none = QPushButton("清除所有选择") #清除所有选择
         self.choice_none.clicked.connect(self.fchoice_none)
         self.choice_all.clicked.connect(self.fchoice_all)
         self.choice_all.setFixedSize(250, 40)
         self.choice_none.setFixedSize(250, 40)
 
-        self.choicebut = QPushButton("Pending Imposition Orders") # 查看待拼版订单表
+        self.choicebut = QPushButton("查看待拼版订单表") # 查看待拼版订单表
         self.choicebut.clicked.connect(self.getorder)
         self.choicebut.setFixedSize(250, 40)
 
-        self.characterbut = QPushButton("Imposition Order Types")  # 查看拼版订单类型
+        self.characterbut = QPushButton("查看拼版订单类型")  # 查看拼版订单类型
         self.characterbut.clicked.connect(self.getcharacter)
         self.characterbut.setFixedSize(250, 40)
 
@@ -122,7 +122,7 @@ class show_result(QWidget):
         self.tableWidget1.setColumnWidth(2, 300)
         self.tableWidget1.setColumnWidth(3, 100)
         self.tableWidget1.setColumnWidth(4, 100)
-        self.tableWidget1.setHorizontalHeaderLabels(['Order ID', 'Delivery Time', 'Order Time', 'Paper Weight', 'Print Number']) #'订单ID', '交货时间', '下单时间', '纸张克重', '打印数量'
+        self.tableWidget1.setHorizontalHeaderLabels(['订单ID', '交货时间', '下单时间', '纸张克重', '打印数量']) #'订单ID', '交货时间', '下单时间', '纸张克重', '打印数量'
         # for i in range(self.orderinf.shape[0]):
         #     for j in range(self.orderinf.shape[1]):
         #
@@ -139,7 +139,7 @@ class show_result(QWidget):
 
         midrightlayout = QVBoxLayout()
         midrightdownlayout = QGridLayout()
-        self.iterlabel = QLabel("Number of Iterations") #遗传优化算法迭代次数
+        self.iterlabel = QLabel("遗传优化算法迭代次数") #遗传优化算法迭代次数
         self.iterlabel.setAlignment(Qt.AlignCenter)
         self.iteration = QLineEdit(str(self.json_data["default"]["iteration"]))
         # self.iteration.setFixedHeight(40)
@@ -147,7 +147,7 @@ class show_result(QWidget):
         midrightlayout.addWidget(self.iteration)
         # self.iteration.setFixedWidth(200)
 
-        self.inputlabel = QLabel("Max Order Selection") #最大选择订单数
+        self.inputlabel = QLabel("最大选择订单数") #最大选择订单数
         self.inputlabel.setAlignment(Qt.AlignCenter)
         self.inputmaxnum = QLineEdit(str(self.json_data["default"]["max_order"]))
         midrightlayout.addWidget(self.inputlabel)
@@ -170,7 +170,7 @@ class show_result(QWidget):
         self.endmouth = int(d[1])
         self.endday = int(d[2])
 
-        self.timelabel = QLabel("Pending Orders Time Span") #未拼版订单时间总跨度
+        self.timelabel = QLabel("未拼版订单时间总跨度") #未拼版订单时间总跨度
         self.timelabel.setAlignment(Qt.AlignCenter)
         self.timelabel.setFixedHeight(20)
         self.timebrowser = QTextBrowser()
@@ -181,9 +181,9 @@ class show_result(QWidget):
         midrightlayout.addWidget(self.timelabel)
         midrightlayout.addWidget(self.timebrowser)
 
-        self.start = QLabel("Imposition Order Delivery Start Time") #拼版订单交货结束时间
+        self.start = QLabel("拼版订单交货结束时间") #拼版订单交货结束时间
         self.start.setAlignment(Qt.AlignCenter)
-        self.end = QLabel("Imposition Order Delivery End Time") #拼版订单交货结束时间
+        self.end = QLabel("拼版订单交货结束时间") #拼版订单交货结束时间
         self.end.setAlignment(Qt.AlignCenter)
         self.choicetime1 = QDateTimeEdit()
         startdat = QDate(self.startyear, self.startmouth, self.startday)
@@ -211,7 +211,7 @@ class show_result(QWidget):
         frame1.setFixedWidth(400)
         midlayout.addWidget(frame1)
 
-        self.makeupbut = QPushButton("START")
+        self.makeupbut = QPushButton("开始")
         self.makeupbut.setFixedSize(150, 40)
         self.makeupbut.clicked.connect(self.makeuprun)
 
@@ -219,7 +219,7 @@ class show_result(QWidget):
         self.stop.setFixedSize(150, 40)
         self.stop.clicked.connect(self.stoprun)
 
-        self.loadbut = QPushButton("Save Imposed File") #写入已拼版文件
+        self.loadbut = QPushButton("写入已拼版文件") #写入已拼版文件
         # self.loadbut.clicked.connect(self.load)
         self.loadbut.setFixedSize(200, 40)
 
